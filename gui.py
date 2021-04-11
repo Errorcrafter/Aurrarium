@@ -8,7 +8,7 @@ sg.theme("Dark Amber")  # colour scheme!
 ###   ═══════════════════════ IMPORTANT ══════════════════════   ###
 current_full_release = "0"     # change THIS every time there is a major update (overhaul, new feature, etc)
 current_minor_release = "5"    # change THIS every time there is a smaller update (bugfixes, etc)
-current_build = "4"            # change THIS every time there is a new commit or smth idfc
+current_build = "7"            # change THIS every time there is a new commit or smth idfc
 
 ### ╔══════════════════════ SETTINGS TAB ══════════════════════╗ ###
 ###    ┏━━━━━━━━━━━━━━━━━━━━━━ TOP ROW ━━━━━━━━━━━━━━━━━━━━━━┓   ###
@@ -39,7 +39,7 @@ stats_frame_layout = [ [sg.Column(stats_frame_col,size=(400,220))] ]
 select_phrase_col = [ [sg.Radio("Select from Preset",group_id=1,k="-sfpRadio-",enable_events=True,default=True),
                        sg.Combo(["Memey","Evangelical","Advertisment"],k="-phraseSelector-",readonly=True)],
                       [sg.Radio("Custom Message",group_id=1,k="-customMsgRadio-",enable_events=True,default=False)],
-                      [sg.Multiline(default_text="sigma balls lmao ez\n\ndownload this shit instead https://github.com/XatzClient/Sigma-Deleter",k="-customPhrase-",size=(40,5))] ]
+                      [sg.Multiline(default_text="sigma balls lmao ez\n\ndownload this shit instead https://github.com/XatzClient/Sigma-Deleter",k="-customPhrase-",size=(40,7))] ]
 
 select_phrase_layout = [ [sg.Column(select_phrase_col,size=(400,214))] ]
 
@@ -79,7 +79,7 @@ while True:  # Event Loop
     event, values = window.read()
     sg.Print(event,values)  # here for logging purposes, may delete
     if event == sg.WIN_CLOSED or event == 'Exit':
-        break  # breaks out of theloop when the winow is closed
+        break  # breaks out of the loop when the winow is closed
 
     if event == "-loginButton-":  # initiates Reddit instance
         reddit = praw.Reddit(client_id=values["-clidInput-"],
