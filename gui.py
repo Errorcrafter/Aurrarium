@@ -5,13 +5,13 @@ from datetime import datetime  # used in -statsAccAge- because yes
 
 sg.theme("Dark Amber")  # colour scheme!
 
-#### ╔══════ IMPORTANT ══════╗ ####
+#### ══════════════════════ IMPORTANT ══════════════════════ ####
 current_full_release = "0"     # change THIS every time there is a major update (overhaul, new feature, etc)
 current_minor_release = "5"    # change THIS every time there is a smaller update (bugfixes, etc)
-current_build = "2"            # change THIS every time there is a new commit or smth idrc
+current_build = "3"            # change THIS every time there is a new commit or smth idfc
 
-### ╔══════════════════════ FIRST TAB ══════════════════════╗ ###
-###  ┏━━━━━━━━━━━━━━━━━━━━━━ TOP ROW ━━━━━━━━━━━━━━━━━━━━━━┓  ###
+### ╔══════════════════════ SETTINGS TAB ══════════════════════╗ ###
+###    ┏━━━━━━━━━━━━━━━━━━━━━━ TOP ROW ━━━━━━━━━━━━━━━━━━━━━━┓   ###
 # LOGIN FRAME: connect your account here
 login_frame_col = [ [sg.Text("Logged in as:"),sg.Text("",k="-loggedInMsg-",size=(20,1))],
                        [sg.Text("Username",size=(15,1)),sg.Input("",k="-usernameInput-",size=(25,1),do_not_clear=False)],
@@ -34,7 +34,7 @@ stats_frame_col = [ [sg.Text("Your Account Info")],
 
 stats_frame_layout = [ [sg.Column(stats_frame_col,size=(400,220))] ]
 
-###  ┏━━━━━━━━━━━━━━━━━━━━━ BOTTOM ROW ━━━━━━━━━━━━━━━━━━━━━┓  ###
+###    ┏━━━━━━━━━━━━━━━━━━━━━ BOTTOM ROW ━━━━━━━━━━━━━━━━━━━━━┓   ###
 # SELECTION FRAME: select what to spam here
 select_phrase_col = [ [sg.Radio("Select from Preset",group_id=1,k="-sfpRadio-",enable_events=True,default=True),
                           sg.Combo(["Memey","Evangelical","Advertisment"],k="-phraseSelector-",readonly=True)],
@@ -63,10 +63,17 @@ misc_col = [ [sg.Frame("Sorting",hn_sel_layout)],
                 [sg.Frame("Credits",credits_layout)] ]
 
 # this compiles all of the above into one window
-layout = [ [sg.Frame("Login",login_frame_layout),sg.Frame("Account Stats",stats_frame_layout)],
+tab1 = [ [sg.Frame("Login",login_frame_layout),sg.Frame("Account Stats",stats_frame_layout)],
            [sg.Frame("Select Phrase to Spam",select_phrase_layout),sg.Column(misc_col)] ]
 
-window = sg.Window(f'Aurrarium {current_full_release}.{current_minor_release}b{current_build}', layout, font=("Helvetica", 12))  # Draws the window
+### ╔══════════════════════ SPAMMER TAB ══════════════════════╗ ###
+tab2 = [ [sg.Output(size=(95,25))],
+         [sg.Text("",size=(30,0)),sg.Button("Spam",size=(30,None))] ]
+
+# Draws the window
+layout = [ [sg.TabGroup([[sg.Tab("Settings",tab1),sg.Tab("Spammer",tab2)]])] ]
+window = sg.Window(f'Aurrarium {current_full_release}.{current_minor_release}b{current_build}',  # version number in window heading
+                   layout, font=("Helvetica", 12))  # font and layout
 
 while True:  # Event Loop
     event, values = window.read()
