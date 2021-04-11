@@ -5,6 +5,11 @@ from datetime import datetime  # used in -statsAccAge- because yes
 
 sg.theme("Dark Amber")  # colour scheme!
 
+#### ╔══════ IMPORTANT ══════╗ ####
+current_full_release = "0"     # change THIS every time there is a major update (overhaul, new feature, etc)
+current_minor_release = "5"    # change THIS every time there is a smaller update (bugfixes, etc)
+current_build = "2"            # change THIS every time there is a new commit or smth idrc
+
 ### ╔══════════════════════ FIRST TAB ══════════════════════╗ ###
 ###  ┏━━━━━━━━━━━━━━━━━━━━━━ TOP ROW ━━━━━━━━━━━━━━━━━━━━━━┓  ###
 # LOGIN FRAME: connect your account here
@@ -44,7 +49,7 @@ hn_sel_col = [ [sg.Text("Sort By:"),sg.Radio("Hot",group_id=2,k="-hotRadio-"),sg
 hn_sel_layout = [ [sg.Column(hn_sel_col,size=(400,50))] ]
 
 # CREDITS: yay attribution
-credits_col = [ [sg.Text("Aurrarium v0.5b1\n" +
+credits_col = [ [sg.Text(f"Aurrarium {current_full_release}.{current_minor_release}b{current_build}\n" +
                         "Made by G1galovaniac\n" +
                         "Discord: macpherson#1415\n" +
                         "Guilded: guilded.gg/g1ga\n" +
@@ -61,7 +66,7 @@ misc_col = [ [sg.Frame("Sorting",hn_sel_layout)],
 layout = [ [sg.Frame("Login",login_frame_layout),sg.Frame("Account Stats",stats_frame_layout)],
            [sg.Frame("Select Phrase to Spam",select_phrase_layout),sg.Column(misc_col)] ]
 
-window = sg.Window('Aurrarium', layout, font=("Helvetica", 12))  # Draws the window
+window = sg.Window(f'Aurrarium {current_full_release}.{current_minor_release}b{current_build}', layout, font=("Helvetica", 12))  # Draws the window
 
 while True:  # Event Loop
     event, values = window.read()
