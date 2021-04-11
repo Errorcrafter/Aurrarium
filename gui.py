@@ -5,6 +5,8 @@ from datetime import datetime  # used in -statsAccAge- because yes
 
 sg.theme("Dark Amber")  # colour scheme!
 
+### ╔══════════════════════ FIRST TAB ══════════════════════╗ ###
+###  ┏━━━━━━━━━━━━━━━━━━━━━━ TOP ROW ━━━━━━━━━━━━━━━━━━━━━━┓  ###
 # LOGIN FRAME: connect your account here
 login_frame_col = [ [sg.Text("Logged in as:"),sg.Text("",k="-loggedInMsg-",size=(20,1))],
                        [sg.Text("Username",size=(15,1)),sg.Input("",k="-usernameInput-",size=(25,1),do_not_clear=False)],
@@ -27,6 +29,7 @@ stats_frame_col = [ [sg.Text("Your Account Info")],
 
 stats_frame_layout = [ [sg.Column(stats_frame_col,size=(400,220))] ]
 
+###  ┏━━━━━━━━━━━━━━━━━━━━━ BOTTOM ROW ━━━━━━━━━━━━━━━━━━━━━┓  ###
 # SELECTION FRAME: select what to spam here
 select_phrase_col = [ [sg.Radio("Select from Preset",group_id=1,k="-sfpRadio-",enable_events=True,default=True),
                           sg.Combo(["Memey","Evangelical","Advertisment"],k="-phraseSelector-",readonly=True)],
@@ -35,12 +38,27 @@ select_phrase_col = [ [sg.Radio("Select from Preset",group_id=1,k="-sfpRadio-",e
 
 select_phrase_layout = [ [sg.Column(select_phrase_col,size=(400,180))] ]
 
+# HOT/NEW SELECTOR: select whether to sort through hot or new
+hn_sel_col = [ [sg.Text("Sort By:"),sg.Radio("Hot",group_id=2,k="-hotRadio-"),sg.Radio("New",group_id=2,k="-newRadio-")] ]
+
+hn_sel_layout = [ [sg.Column(hn_sel_col,size=(400,50))] ]
+
+# CREDITS: yay attribution
+hn_sel_col = [ [sg.Text("Aurrarium v0.5b1\n" +
+                        "Made by G1galovaniac\n" +
+                        "Discord: macpherson#1415\n" +
+                        "Guilded: guilded.gg/g1ga\n" +
+                        "Reddit: /u/Xianthu_Exists\n" +
+                        "GitHub: Errorcrafter")] ]
+
+hn_sel_layout = [ [sg.Column(hn_sel_col,size=(400,130))] ]
 
 # this compiles all of the above into one window
 layout = [ [sg.Frame("Login",login_frame_layout),sg.Frame("Account Stats",stats_frame_layout)],
-           [sg.Frame("Select Phrase to Spam",select_phrase_layout)] ]
+           [sg.Frame("Select Phrase to Spam",select_phrase_layout),sg.Frame("Sorting",hn_sel_layout)] ]
 
 window = sg.Window('Aurrarium', layout, font=("Helvetica", 12))  # Draws the window
+
 while True:  # Event Loop
     event, values = window.read()
     print(event,values)  # here for logging purposes, may delete
