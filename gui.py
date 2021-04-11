@@ -36,7 +36,7 @@ select_phrase_col = [ [sg.Radio("Select from Preset",group_id=1,k="-sfpRadio-",e
                          [sg.Radio("Custom Message",group_id=1,k="-customMsgRadio-",enable_events=True,default=False)],
                          [sg.Multiline(default_text="sigma balls lmao ez\n\ndownload this shit instead https://github.com/XatzClient/Sigma-Deleter",k="-customPhrase-",size=(40,5))] ]
 
-select_phrase_layout = [ [sg.Column(select_phrase_col,size=(400,180))] ]
+select_phrase_layout = [ [sg.Column(select_phrase_col,size=(400,214))] ]
 
 # HOT/NEW SELECTOR: select whether to sort through hot or new
 hn_sel_col = [ [sg.Text("Sort By:"),sg.Radio("Hot",group_id=2,k="-hotRadio-"),sg.Radio("New",group_id=2,k="-newRadio-")] ]
@@ -44,18 +44,22 @@ hn_sel_col = [ [sg.Text("Sort By:"),sg.Radio("Hot",group_id=2,k="-hotRadio-"),sg
 hn_sel_layout = [ [sg.Column(hn_sel_col,size=(400,50))] ]
 
 # CREDITS: yay attribution
-hn_sel_col = [ [sg.Text("Aurrarium v0.5b1\n" +
+credits_col = [ [sg.Text("Aurrarium v0.5b1\n" +
                         "Made by G1galovaniac\n" +
                         "Discord: macpherson#1415\n" +
                         "Guilded: guilded.gg/g1ga\n" +
                         "Reddit: /u/Xianthu_Exists\n" +
                         "GitHub: Errorcrafter")] ]
 
-hn_sel_layout = [ [sg.Column(hn_sel_col,size=(400,130))] ]
+credits_layout = [ [sg.Column(credits_col,size=(400,130))] ]
+
+# combines credits and h/n selector into a column on its own because sphagetti code
+misc_col = [ [sg.Frame("Sorting",hn_sel_layout)],
+                [sg.Frame("Credits",credits_layout)] ]
 
 # this compiles all of the above into one window
 layout = [ [sg.Frame("Login",login_frame_layout),sg.Frame("Account Stats",stats_frame_layout)],
-           [sg.Frame("Select Phrase to Spam",select_phrase_layout),sg.Frame("Sorting",hn_sel_layout)] ]
+           [sg.Frame("Select Phrase to Spam",select_phrase_layout),sg.Column(misc_col)] ]
 
 window = sg.Window('Aurrarium', layout, font=("Helvetica", 12))  # Draws the window
 
