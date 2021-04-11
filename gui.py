@@ -2,26 +2,22 @@ import PySimpleGUI as sg
 import praw      # this is here so i can initiate the Reddit instance and get account stats
 import prawcore  # and this is here to make sure input credentials are valid
 from datetime import datetime  # used in -statsAccAge- because yes
-# test comment
+
 sg.theme("Dark Amber")  # colour scheme!
 
 # LOGIN FRAME: connect your account here
-login_frame_layout = [ [sg.Text("Logged in as:"),sg.Text("",k="-loggedInMsg-",size=(20,1))],
+login_frame_col = [ [sg.Text("Logged in as:"),sg.Text("",k="-loggedInMsg-",size=(20,1))],
                        [sg.Text("Username",size=(15,1)),sg.Input("",k="-usernameInput-",size=(25,1),do_not_clear=False)],
                        [sg.Text("Password",size=(15,1)),sg.Input("",k="-passwordInput-",size=(25,1),do_not_clear=False,password_char="•")],
                        [sg.Text("User Agent",size=(15,1)),sg.Input("Aurrarium by u/Xianthu_Exists",k="-uAgentInput-",size=(25,1))],
                        [sg.Text("Client ID",size=(15,1)),sg.Input("",k="-clidInput-",size=(25,1),do_not_clear=False,password_char="•")],
                        [sg.Text("Client Secret",size=(15,1)),sg.Input("",k="-clsecretInput-",size=(25,1),do_not_clear=False,password_char="•")],
-                       [sg.Text("",size=(7,0)),sg.Submit("Use This Account",k="-loginButton-",size=(25,1),)] ]
+                       [sg.Text("",size=(7,0)),sg.Submit("Use This Account",k="-loginButton-",size=(25,1))] ]
 
-# SELECTION FRAME: select what to spam here
-select_phrase_layout = [ [sg.Radio("Select from Preset",group_id=1,k="-sfpRadio-",enable_events=True,default=True),
-                          sg.Combo(["Memey","Evangelical","Advertisment"],k="-phraseSelector-",readonly=True)],
-                         [sg.Radio("Custom Message",group_id=1,k="-customMsgRadio-",enable_events=True,default=False)],
-                         [sg.Multiline(default_text="sigma balls lmao ez\n\ndownload this shit instead https://github.com/XatzClient/Sigma-Deleter",k="-customPhrase-",size=(40,5))] ]
+login_frame_layout = [ [sg.Column(login_frame_col,size=(400,220))] ]
 
 # STATS FRAME: shows the connected account's info
-stats_frame_layout = [ [sg.Text("Your Account Info")],
+stats_frame_col = [ [sg.Text("Your Account Info")],
                        [sg.Text("Username:"),sg.Text("",k="-statsUsername-",size=(20,1))],
                        [sg.Text("Post Karma:"),sg.Text("",k="-statsPostKarma-",size=(20,1))],
                        [sg.Text("Comment Karma:"),sg.Text("",k="-statsCommentKarma-",size=(20,1))],
@@ -29,9 +25,20 @@ stats_frame_layout = [ [sg.Text("Your Account Info")],
                        [sg.Text("Has Premium:"),sg.Text("",k="-statsHasPrem-",size=(20,1))],
                        [sg.Text("Suspended:"),sg.Text("",k="-statsSuspended-",size=(20,1))], ]
 
+stats_frame_layout = [ [sg.Column(stats_frame_col,size=(400,220))] ]
+
+# SELECTION FRAME: select what to spam here
+select_phrase_col = [ [sg.Radio("Select from Preset",group_id=1,k="-sfpRadio-",enable_events=True,default=True),
+                          sg.Combo(["Memey","Evangelical","Advertisment"],k="-phraseSelector-",readonly=True)],
+                         [sg.Radio("Custom Message",group_id=1,k="-customMsgRadio-",enable_events=True,default=False)],
+                         [sg.Multiline(default_text="sigma balls lmao ez\n\ndownload this shit instead https://github.com/XatzClient/Sigma-Deleter",k="-customPhrase-",size=(40,5))] ]
+
+select_phrase_layout = [ [sg.Column(select_phrase_col,size=(400,180))] ]
+
+
 # this compiles all of the above into one window
-layout = [ [sg.Frame("Login",login_frame_layout,size=(40,7)),sg.Frame("Account Stats",stats_frame_layout,size=(40,7))],
-           [sg.Frame("Select Phrase to Spam",select_phrase_layout,size=(40,7))] ]
+layout = [ [sg.Frame("Login",login_frame_layout),sg.Frame("Account Stats",stats_frame_layout)],
+           [sg.Frame("Select Phrase to Spam",select_phrase_layout)] ]
 
 window = sg.Window('Aurrarium', layout, font=("Helvetica", 12))  # Draws the window
 while True:  # Event Loop
@@ -46,7 +53,14 @@ while True:  # Event Loop
                             password=values["-passwordInput-"],
                             user_agent=values["-uAgentInput-"],
                             username=values["-usernameInput-"])
-        me = reddit.user.me()
+        try:
+            me = reddit.user.me()
+        except (prawcore.exceptions.ResponseException,AttributeError) as e:  # here if invalid or empty
+            window["-loggedInMsg-"].Update("Login credentials invalid")
+            print(str(e))
+        except Exception as e:
+            window["-loggedInMsg-"].Update("Unexpected error!")  # here if things go all sorts of wrong and some other error occurs
+            print(str(e))
 
         try:   # try block in case no values were input or login invalidd
             window["-loggedInMsg-"].Update(me)  # two ifferent text labels to tel you who you are because WHY NOT
