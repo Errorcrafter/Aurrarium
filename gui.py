@@ -32,7 +32,7 @@ stats_frame_col = [ [sg.Text("Your Account Info")],
                     [sg.Text("Has Premium:"),sg.Text("",k="-statsHasPrem-",size=(20,1))],
                     [sg.Text("Suspended:"),sg.Text("",k="-statsSuspended-",size=(20,1))], ]
 
-stats_frame_layout = [ [sg.Column(stats_frame_col,size=(400,220))] ]
+stats_frame_layout = [ [sg.Column(stats_frame_col,size=(400,225))] ]
 
 ###    ┏━━━━━━━━━━━━━━━━━━━━━ BOTTOM ROW ━━━━━━━━━━━━━━━━━━━━━┓   ###
 # SELECTION FRAME: select what to spam here
@@ -62,7 +62,7 @@ credits_layout = [ [sg.Column(credits_col,size=(400,130))] ]
 misc_col = [ [sg.Frame("Sorting",hn_sel_layout)],
              [sg.Frame("Credits",credits_layout)] ]
 
-# this compiles all of the above into one window
+# this compiles all of the above into one tab
 tab1 = [ [sg.Frame("Login",login_frame_layout),sg.Frame("Account Stats",stats_frame_layout)],
          [sg.Frame("Select Phrase to Spam",select_phrase_layout),sg.Column(misc_col)] ]
 
