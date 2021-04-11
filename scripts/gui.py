@@ -8,7 +8,7 @@ sg.theme("Dark Amber")  # colour scheme!
 ###   ═══════════════════════ IMPORTANT ══════════════════════   ###
 current_full_release = "0"     # change THIS every time there is a major update (overhaul, new feature, etc)
 current_minor_release = "6"    # change THIS every time there is a smaller update (bugfixes, etc)
-current_build = "8"            # change THIS every time there is a new commit or smth idfc
+current_build = "9"            # change THIS every time there is a new commit or smth idfc
 
 ### ╔══════════════════════ SETTINGS TAB ══════════════════════╗ ###
 ###    ┏━━━━━━━━━━━━━━━━━━━━━━ TOP ROW ━━━━━━━━━━━━━━━━━━━━━━┓   ###
