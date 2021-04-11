@@ -44,7 +44,7 @@ select_phrase_col = [ [sg.Radio("Select from Preset",group_id=1,k="-sfpRadio-",e
 select_phrase_layout = [ [sg.Column(select_phrase_col,size=(400,214))] ]
 
 # HOT/NEW SELECTOR: select whether to sort through hot or new
-hn_sel_col = [ [sg.Text("Sort By:"),sg.Radio("Hot",group_id=2,k="-hotRadio-"),sg.Radio("New",group_id=2,k="-newRadio-")] ]
+hn_sel_col = [ [sg.Text("Sort By:"),sg.Radio("Hot",group_id=2,k="-hotRadio-"),sg.Radio("New",group_id=2,k="-newRadio-",default=True)] ]
 
 hn_sel_layout = [ [sg.Column(hn_sel_col,size=(400,50))] ]
 
@@ -77,7 +77,7 @@ window = sg.Window(f'Aurrarium {current_full_release}.{current_minor_release}b{c
 
 while True:  # Event Loop
     event, values = window.read()
-    print(event,values)  # here for logging purposes, may delete
+    sg.Print(event,values)  # here for logging purposes, may delete
     if event == sg.WIN_CLOSED or event == 'Exit':
         break  # breaks out of theloop when the winow is closed
 
@@ -91,10 +91,10 @@ while True:  # Event Loop
             me = reddit.user.me()
         except (prawcore.exceptions.ResponseException,AttributeError) as e:  # here if invalid or empty
             window["-loggedInMsg-"].Update("Login credentials invalid")
-            print(str(e))
+            sg.Print(str(e))
         except Exception as e:
             window["-loggedInMsg-"].Update("Unexpected error!")  # here if things go all sorts of wrong and some other error occurs
-            print(str(e))
+            sg.Print(str(e))
 
         try:   # try block in case no values were input or login invalidd
             window["-loggedInMsg-"].Update(me)  # two ifferent text labels to tel you who you are because WHY NOT
