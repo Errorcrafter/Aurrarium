@@ -58,13 +58,17 @@ credits_col = [ [sg.Text(f"Aurrarium {current_full_release}.{current_minor_relea
 
 credits_layout = [ [sg.Column(credits_col,size=(400,130))] ]
 
-# combines credits and h/n selector into a column on its own because sphagetti code
-misc_col = [ [sg.Frame("Sorting",hn_sel_layout)],
-             [sg.Frame("Credits",credits_layout)] ]
+# combines stuff into MORE columns because alignment
+tab1_col_l = [ [sg.Frame("Login",login_frame_layout)],
+               [sg.Frame("Select Phrase to Spam",select_phrase_layout)] ]
+tab1_col_r = [ [sg.Frame("Account Stats",stats_frame_layout)],
+               [sg.Frame("Sorting",hn_sel_layout)],
+               [sg.Frame("Credits",credits_layout)] ]
 
 # this compiles all of the above into one tab
-tab1 = [ [sg.Frame("Login",login_frame_layout),sg.Frame("Account Stats",stats_frame_layout)],
-         [sg.Frame("Select Phrase to Spam",select_phrase_layout),sg.Column(misc_col)] ]
+tab1= [[sg.Column(tab1_col_l),sg.Column(tab1_col_r)]]
+# tab1 = [ [sg.Frame("Login",login_frame_layout),sg.Frame("Account Stats",stats_frame_layout)],
+#          [sg.Frame("Select Phrase to Spam",select_phrase_layout),sg.Column(misc_col)] ]
 
 ### ╔══════════════════════ SPAMMER TAB ══════════════════════╗ ###
 tab2 = [ [sg.Output(size=(95,25))],
