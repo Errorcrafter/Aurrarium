@@ -86,7 +86,8 @@ while True:  # Event Loop
                             client_secret=values["-clsecretInput-"],
                             password=values["-passwordInput-"],
                             user_agent=values["-uAgentInput-"],
-                            username=values["-usernameInput-"])
+                            username=values["-usernameInput-"],
+                            praw8_raise_exception_on_me=True)
         try:
             me = reddit.user.me()
         except (prawcore.exceptions.ResponseException,AttributeError) as e:  # here if invalid or empty
