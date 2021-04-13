@@ -72,7 +72,7 @@ tab1_col_r = [ [sg.Frame("Account Stats",stats_frame_layout)],
 tab1= [[sg.Column(tab1_col_l),sg.Column(tab1_col_r)]]
 
 ### ╔══════════════════════ SPAMMER TAB ══════════════════════╗ ###
-tab2 = [ [sg.Output(size=(95,25))],
+tab2 = [ [sg.Multiline(k="-spammerOutput-",size=(95,25),disabled=True)],
          [sg.Text("",size=(30,0)),sg.Button("Start Spam",k="-startSpam-",size=(30,None))] ]
 
 # Draws the window
@@ -128,7 +128,12 @@ while True:  # Event Loop
         window["-phraseSelector-"].Update(disabled=True)   # also this comment layout
         window["-customPhrase-"].Update(disabled=False)    # only exists to annoy you.
 
-    if event == "-startSpam-":
-        start_spam(event,values,window,reddit)
+    if event == "-startSpam-":  # executes code in aurrarium_spammer.py when this button is pressed
+        try:
+            start_spam(event,values,window,reddit)
+        except NameError:  # in case some dumb fuck forgets to enter their login
+            pass
+        except Exception as e:  # if shit goes horribly wrong
+            sg.Print(repr(e))
 
 window.close()  # closes the window once out of event loop
