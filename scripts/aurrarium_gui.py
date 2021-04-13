@@ -2,15 +2,16 @@ import PySimpleGUI as sg
 import praw      # this is here so i can initiate the Reddit instance and get account stats
 import prawcore  # and this is here to make sure input credentials are valid
 from datetime import datetime  # used in -statsAccAge- because yes
-import aurrarium_spammer
+from aurrarium_spammer import start_spam
+import random
 
 sg.theme("Dark Amber")  # colour scheme!
-#aurrarium_spammer.test()
+#test()
 
 ###   ═══════════════════════ IMPORTANT ══════════════════════   ###
 current_full_release = "0"     # change THIS every time there is a major update (overhaul, new feature, etc)
 current_minor_release = "6"    # change THIS every time there is a smaller update (bugfixes, etc)
-current_build = "9"            # change THIS every time there is a new commit or smth idfc
+current_build = "10"            # change THIS every time there is a new commit or smth idfc
 
 ### ╔══════════════════════ SETTINGS TAB ══════════════════════╗ ###
 ###    ┏━━━━━━━━━━━━━━━━━━━━━━ TOP ROW ━━━━━━━━━━━━━━━━━━━━━━┓   ###
@@ -97,13 +98,9 @@ while True:  # Event Loop
         except (prawcore.exceptions.ResponseException,AttributeError) as e:  # here if invalid or empty
             window["-loggedInMsg-"].Update("Login credentials invalid")
             sg.Print(repr(e))
-            if window["-loggedInMsg-"] == "Login credentials invalid":
-                sg.Print("AAAAAAAAAAA")
         except praw.exceptions.ReadOnlyException as e:
             window["-loggedInMsg-"].Update("Login credentials invalid")
             sg.Print(repr(e))
-            if window["-loggedInMsg-"] == "Login credentials invalid":
-                sg.Print("AAAAAAAAAAA")
         except Exception as e:
             window["-loggedInMsg-"].Update("Unexpected error!")  # here if things go all sorts of wrong and some other error occurs
             sg.Print(repr(e))
@@ -132,6 +129,6 @@ while True:  # Event Loop
         window["-customPhrase-"].Update(disabled=False)    # only exists to annoy you.
 
     if event == "-startSpam-":
-        aurrarium_spammer.start_spam(event,values,window,reddit)
+        start_spam(event,values,window,reddit)
 
 window.close()  # closes the window once out of event loop
