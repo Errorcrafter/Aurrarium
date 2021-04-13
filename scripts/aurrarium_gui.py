@@ -96,10 +96,17 @@ while True:  # Event Loop
             me = reddit.user.me()
         except (prawcore.exceptions.ResponseException,AttributeError) as e:  # here if invalid or empty
             window["-loggedInMsg-"].Update("Login credentials invalid")
-            sg.Print(str(e))
+            sg.Print(repr(e))
+            if window["-loggedInMsg-"] == "Login credentials invalid":
+                sg.Print("AAAAAAAAAAA")
+        except praw.exceptions.ReadOnlyException as e:
+            window["-loggedInMsg-"].Update("Login credentials invalid")
+            sg.Print(repr(e))
+            if window["-loggedInMsg-"] == "Login credentials invalid":
+                sg.Print("AAAAAAAAAAA")
         except Exception as e:
             window["-loggedInMsg-"].Update("Unexpected error!")  # here if things go all sorts of wrong and some other error occurs
-            sg.Print(str(e))
+            sg.Print(repr(e))
 
         try:   # try block in case no values were input or login invalidd
             window["-loggedInMsg-"].Update(me)  # two ifferent text labels to tel you who you are because WHY NOT
@@ -112,7 +119,7 @@ while True:  # Event Loop
             window["-statsAccAge-"].Update(accAge)
             window["-statsHasPrem-"].Update(me.is_gold)
             window["-statsSuspended-"].Update(me.is_suspended)
-        except (prawcore.exceptions.ResponseException,AttributeError):  # here if invalid or empty
+        except (prawcore.exceptions.ResponseException,AttributeError,praw.exceptions.ReadOnlyException):  # here if invalid or empty
             window["-loggedInMsg-"].Update("Login credentials invalid")
         except:
             window["-loggedInMsg-"].Update("Unexpected error!")  # here if things go all sorts of wrong and some other error occurs
@@ -123,5 +130,8 @@ while True:  # Event Loop
     if event == "-customMsgRadio-":                        # phrases and presets.
         window["-phraseSelector-"].Update(disabled=True)   # also this comment layout
         window["-customPhrase-"].Update(disabled=False)    # only exists to annoy you.
+
+    if event == "-startSpam-":
+        aurrarium_spammer.start_spam(event,values,window,reddit)
 
 window.close()  # closes the window once out of event loop
