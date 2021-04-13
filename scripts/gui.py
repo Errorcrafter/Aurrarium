@@ -67,8 +67,6 @@ tab1_col_r = [ [sg.Frame("Account Stats",stats_frame_layout)],
 
 # this compiles all of the above into one tab
 tab1= [[sg.Column(tab1_col_l),sg.Column(tab1_col_r)]]
-# tab1 = [ [sg.Frame("Login",login_frame_layout),sg.Frame("Account Stats",stats_frame_layout)],
-#          [sg.Frame("Select Phrase to Spam",select_phrase_layout),sg.Column(misc_col)] ]
 
 ### ╔══════════════════════ SPAMMER TAB ══════════════════════╗ ###
 tab2 = [ [sg.Output(size=(95,25))],
