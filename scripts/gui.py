@@ -2,6 +2,7 @@ import PySimpleGUI as sg
 import praw      # this is here so i can initiate the Reddit instance and get account stats
 import prawcore  # and this is here to make sure input credentials are valid
 from datetime import datetime  # used in -statsAccAge- because yes
+import aurrarium_spammer 
 
 sg.theme("Dark Amber")  # colour scheme!
 
@@ -70,7 +71,7 @@ tab1= [[sg.Column(tab1_col_l),sg.Column(tab1_col_r)]]
 
 ### ╔══════════════════════ SPAMMER TAB ══════════════════════╗ ###
 tab2 = [ [sg.Output(size=(95,25))],
-         [sg.Text("",size=(30,0)),sg.Button("Spam",size=(30,None))] ]
+         [sg.Text("",size=(15,0)),sg.Button("Start Spam",k="-startSpam-",size=(30,None)),sg.Button("Stop Spam",k="-stopSpam-",size=(30,None))] ]
 
 # Draws the window
 layout = [ [sg.TabGroup([[sg.Tab("Settings",tab1),sg.Tab("Spammer",tab2)]])] ]
