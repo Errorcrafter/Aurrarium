@@ -2,9 +2,10 @@ import PySimpleGUI as sg
 import praw      # this is here so i can initiate the Reddit instance and get account stats
 import prawcore  # and this is here to make sure input credentials are valid
 from datetime import datetime  # used in -statsAccAge- because yes
-import aurrarium_spammer 
+import aurrarium_spammer
 
 sg.theme("Dark Amber")  # colour scheme!
+#aurrarium_spammer.test()
 
 ###   ═══════════════════════ IMPORTANT ══════════════════════   ###
 current_full_release = "0"     # change THIS every time there is a major update (overhaul, new feature, etc)
@@ -42,7 +43,7 @@ select_phrase_col = [ [sg.Radio("Select from Preset",group_id=1,k="-sfpRadio-",e
                       [sg.Radio("Custom Message",group_id=1,k="-customMsgRadio-",enable_events=True,default=False)],
                       [sg.Multiline(default_text="sigma balls lmao ez\n\ndownload this shit instead https://github.com/XatzClient/Sigma-Deleter",k="-customPhrase-",size=(40,7))] ]
 
-select_phrase_layout = [ [sg.Column(select_phrase_col,size=(400,214))] ]
+select_phrase_layout = [ [sg.Column(select_phrase_col,size=(400,220))] ]
 
 # HOT/NEW SELECTOR: select whether to sort through hot or new
 hn_sel_col = [ [sg.Text("Sort By:"),sg.Radio("Hot",group_id=2,k="-hotRadio-"),sg.Radio("New",group_id=2,k="-newRadio-",default=True)] ]
@@ -71,12 +72,12 @@ tab1= [[sg.Column(tab1_col_l),sg.Column(tab1_col_r)]]
 
 ### ╔══════════════════════ SPAMMER TAB ══════════════════════╗ ###
 tab2 = [ [sg.Output(size=(95,25))],
-         [sg.Text("",size=(15,0)),sg.Button("Start Spam",k="-startSpam-",size=(30,None)),sg.Button("Stop Spam",k="-stopSpam-",size=(30,None))] ]
+         [sg.Text("",size=(30,0)),sg.Button("Start Spam",k="-startSpam-",size=(30,None))] ]
 
 # Draws the window
 layout = [ [sg.TabGroup([[sg.Tab("Settings",tab1),sg.Tab("Spammer",tab2)]])] ]
 window = sg.Window(f'Aurrarium {current_full_release}.{current_minor_release}b{current_build}',  # version number in window heading
-                   layout, font=("Helvetica", 12))  # font and layout
+                   layout, font=("Tahoma", 12))  # font and layout
 
 while True:  # Event Loop
     event, values = window.read()
