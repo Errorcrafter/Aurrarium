@@ -18,7 +18,7 @@
     <img src="https://img.shields.io/github/issues-pr-raw/Errorcrafter/Aurrarium.svg?style=flat-square&logo=github&logoColor=white"
          alt="GitHub pull requests">
     <a href="https://github.com/Errorcrafter/Aurrarium/">
-    <img src="https://img.shields.io/github/repo-size/Errorcrafter/Aurrarium"
+    <img src="https://img.shields.io/github/repo-size/Errorcrafter/Aurrarium.svg?style=flat-square&logo=github&logoColor=white"
          alt="Repo size">
 </p> 
 
