@@ -17,7 +17,14 @@
     <a href="https://github.com/Errorcrafter/Aurrarium/pulls">
     <img src="https://img.shields.io/github/issues-pr-raw/Errorcrafter/Aurrarium.svg?style=flat-square&logo=github&logoColor=white"
          alt="GitHub pull requests">
-    <a>
+    <a href="https://github.com/Errorcrafter/Aurrarium/">
     <img src="https://img.shields.io/github/repo-size/Errorcrafter/Aurrarium"
          alt="Repo size">
 </p> 
+
+
+---
+
+
+## About
+Aurrarium is a simple GUI-based reddit spambot made with [PRAW](https://praw.readthedocs.io/en/latest/index.html) and [PySimpleGUI](https://pysimplegui.readthedocs.io/en/latest/).
