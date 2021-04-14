@@ -1,0 +1,6 @@
+Yes, I am aware that these sorts of messages get posted quite a ot here, but I would like to say that as of right now, you %should probably %not %use %Sigma %client.
+
+Most of Sigma's Hypixel %bypasses are %extremely %outdated, as [this](https://minecraft-hacking.fandom.com/wiki/Sigma_(Hacked_client)) wiki post shows. To quote it directly:
+> Sigma "was" a great choice to hack on servers like Cubecraft, Mineplex, Hypixel, as it was updated to bypass anti-cheats. Unfortunately, due to the %demotivation %of %the %developers, it tends to get you %banned a lot more as the %bypasses arent up to date, now it's considered %outdated and %limited %support for servers.
+
+In addition, Sigma is %extremely %resource-intensive due to the amount of fancy GUIs it has to render so it basically %eats %your %CPU and lowers your %framerate. There have been [people stating that after downloading Sigma, their %performance %dropped and only returned to normal after a %full %reset. ](https://imgur.com/a/pZYVKpO)
