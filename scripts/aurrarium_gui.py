@@ -40,7 +40,7 @@ stats_frame_layout = [ [sg.Column(stats_frame_col,size=(400,225))] ]
 ###    ┏━━━━━━━━━━━━━━━━━━━━━ BOTTOM ROW ━━━━━━━━━━━━━━━━━━━━━┓   ###
 # SELECTION FRAME: select what to spam here
 select_phrase_col = [ [sg.Radio("Select from Preset",group_id=1,k="-sfpRadio-",enable_events=True,default=True),
-                       sg.Combo(["Memey","Evangelical","Advertisment"],k="-phraseSelector-",readonly=True)],
+                       sg.Combo(["Memey","Evangelical","Ironic","Factual","All"],k="-phraseSelector-",readonly=True)],
                       [sg.Radio("Custom Message",group_id=1,k="-customMsgRadio-",enable_events=True,default=False)],
                       [sg.Multiline(default_text="sigma balls lmao ez\n\ndownload this shit instead https://github.com/XatzClient/Sigma-Deleter",k="-customPhrase-",size=(40,7))] ]
 
