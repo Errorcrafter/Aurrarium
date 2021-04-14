@@ -9,17 +9,17 @@
 
 <p align="center">
     <a href="https://github.com/Errorcrafter/Aurrarium/commits/master">
-    <img src="https://img.shields.io/github/last-commit/Errorcrafter/Aurrarium.svg?style=flat-square&logo=github&logoColor=white"
+    <img src="https://img.shields.io/github/last-commit/Errorcrafter/Aurrarium.svg?style=flat-square"
          alt="GitHub last commit">
     <a href="https://github.com/Errorcrafter/Aurrarium/issues">
-    <img src="https://img.shields.io/github/issues-raw/Errorcrafter/Aurrarium.svg?style=flat-square&logo=github&logoColor=white"
+    <img src="https://img.shields.io/github/issues-raw/Errorcrafter/Aurrarium.svg?style=flat-square"
          alt="GitHub issues">
     <a href="https://github.com/Errorcrafter/Aurrarium/pulls">
-    <img src="https://img.shields.io/github/issues-pr-raw/Errorcrafter/Aurrarium.svg?style=flat-square&logo=github&logoColor=white"
+    <img src="https://img.shields.io/github/issues-pr-raw/Errorcrafter/Aurrarium.svg?style=flat-square"
          alt="GitHub pull requests">
     <a href="https://github.com/Errorcrafter/Aurrarium/">
-    <img src="https://img.shields.io/github/repo-size/Errorcrafter/Aurrarium"
-         alt="Repo size">
+    <img src="https://img.shields.io/github/repo-size/Errorcrafter/Aurrarium.svg?style=flat-square"
+            alt="Repo size">
 </p> 
 
 
