@@ -11,7 +11,7 @@ sg.theme("Dark Amber")  # colour scheme!
 ###   ═══════════════════════ IMPORTANT ══════════════════════   ###
 current_full_release = "0"     # change THIS every time there is a major update (overhaul, new feature, etc)
 current_minor_release = "6"    # change THIS every time there is a smaller update (bugfixes, etc)
-current_build = "10"            # change THIS every time there is a new commit or smth idfc
+current_build = "11"            # change THIS every time there is a new commit or smth idfc
 
 ### ╔══════════════════════ SETTINGS TAB ══════════════════════╗ ###
 ###    ┏━━━━━━━━━━━━━━━━━━━━━━ TOP ROW ━━━━━━━━━━━━━━━━━━━━━━┓   ###
@@ -47,7 +47,8 @@ select_phrase_col = [ [sg.Radio("Select from Preset",group_id=1,k="-sfpRadio-",e
 select_phrase_layout = [ [sg.Column(select_phrase_col,size=(400,220))] ]
 
 # HOT/NEW SELECTOR: select whether to sort through hot or new
-hn_sel_col = [ [sg.Text("Sort By:"),sg.Radio("Hot",group_id=2,k="-hotRadio-"),sg.Radio("New",group_id=2,k="-newRadio-",default=True)] ]
+hn_sel_col = [ [sg.Text("Sort By:"),sg.Radio("Hot",group_id=2,k="-hotRadio-"),sg.Radio("New",group_id=2,k="-newRadio-",default=True),
+                sg.Text("Delay:"),sg.Spin([x / 10 for x in range(0, 100)],initial_value=5.0,k="-delay-"),sg.Text("mins")] ]
 
 hn_sel_layout = [ [sg.Column(hn_sel_col,size=(400,50))] ]
 
