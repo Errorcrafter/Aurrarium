@@ -1,11 +1,6 @@
 import praw
 import prawcore
 
-# def test():
-#     print("this is a test")
-
-# if __name__ == "__main__":
-#     test()
 
 def start_spam(event,values,window,reddit : praw.Reddit):
     print = lambda *args, **kwargs: window['-spammerOutput-'].print(*args, **kwargs)
