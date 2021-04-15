@@ -17,9 +17,7 @@ def parse_text(txt:str):  # applies & and % notation
     zero_width = ['​', '‍', '‌']                    # used in % notation
 
     sp_txt = txt.split(" ")
-    print(sp_txt)
     for i in range(len(sp_txt)):
-        print(sp_txt[i])
         if sp_txt[i].startswith("%"):
             sp_txt[i] = sp_txt[i][1:]
             sp_txt[i] = ''.join(f"{x}{random.choice(zero_width) if random.randint(0,1) else ''}" for x in sp_txt[i])
@@ -28,11 +26,9 @@ def parse_text(txt:str):  # applies & and % notation
         sp_txt[i] = sp_txt[i].replace("&em_spam&",gen_random_string(happy_emjs,5))
         sp_txt[i] = sp_txt[i].replace("&sad_spam&",gen_random_string(sad_emjs,5))
         sp_txt[i] = sp_txt[i].replace("&anger_spam&",gen_random_string(anger_emjs,5))
-        print(sp_txt[i])
     
     return " ".join(sp_txt)
 
-print(parse_text("hello %percent &sd& &em_spam&"))
 
 def start_spam(event,values,window,reddit:praw.Reddit):
     print = lambda *args, **kwargs: window['-spammerOutput-'].print(*args, **kwargs)
