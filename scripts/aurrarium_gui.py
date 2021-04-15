@@ -11,7 +11,7 @@ sg.theme("Dark Amber")  # colour scheme!
 ###   ═══════════════════════ IMPORTANT ══════════════════════   ###
 current_full_release = "0"     # change THIS every time there is a major update (overhaul, new feature, etc)
 current_minor_release = "6"    # change THIS every time there is a smaller update (bugfixes, etc)
-current_build = "11"            # change THIS every time there is a new commit or smth idfc
+current_build = "12"            # change THIS every time there is a new commit or smth idfc
 
 ### ╔══════════════════════ SETTINGS TAB ══════════════════════╗ ###
 ###    ┏━━━━━━━━━━━━━━━━━━━━━━ TOP ROW ━━━━━━━━━━━━━━━━━━━━━━┓   ###
@@ -40,7 +40,7 @@ stats_frame_layout = [ [sg.Column(stats_frame_col,size=(400,225))] ]
 ###    ┏━━━━━━━━━━━━━━━━━━━━━ BOTTOM ROW ━━━━━━━━━━━━━━━━━━━━━┓   ###
 # SELECTION FRAME: select what to spam here
 select_phrase_col = [ [sg.Radio("Select from Preset",group_id=1,k="-sfpRadio-",enable_events=True,default=True),
-                       sg.Combo(["Memey","Evangelical","Ironic","Factual","All"],k="-phraseSelector-",readonly=True)],
+                       sg.Combo(["Memey","Evangelical","Ironic","Factual","All"],k="-phraseSelector-",readonly=True,default_value="Memey")],
                       [sg.Radio("Custom Message",group_id=1,k="-customMsgRadio-",enable_events=True,default=False)],
                       [sg.Multiline(default_text="sigma balls lmao ez\n\ndownload this shit instead https://github.com/XatzClient/Sigma-Deleter",k="-customPhrase-",size=(40,7))] ]
 

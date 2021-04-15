@@ -2,6 +2,7 @@ import praw
 import prawcore
 import re
 import random
+import time
 
 def split_file(category):  # splits contents of txt files in phrases folder into a list.
     f = open(f"phrases/{category.lower()}.txt","r").read()
@@ -34,11 +35,15 @@ def start_spam(event,values,window,reddit:praw.Reddit):
     print = lambda *args, **kwargs: window['-spammerOutput-'].print(*args, **kwargs)
     print("Starting Aurrarium now!")
 
+    cat_name =  values["-phraseSelector-"]
+    print(f"Selected message category: {cat_name}")
+    msg_list = split_file(values["-phraseSelector-"])
+
     # checks to see if reddit instance is valid
     try:
         me = reddit.user.me()
     except:
-        print("Hmm, there seems to be a problem with your login credentials. Please try again.")
+        print("Hmm, there seems to be a problem with your login credentials. Please try again.",text_color='red')
         return
     
     print(f"Logged in as u/{me}")
@@ -48,7 +53,16 @@ def start_spam(event,values,window,reddit:praw.Reddit):
     # looping thru all posts:
     target = reddit.subreddit("test")  # for testing purposes, will change to sigmaclient later
     for s in target.stream.submissions():
-        pass  # WILL ADD SPAMBOT REPLY HERE
+        print(f"Found post \"{s.title}\" by user u/{s.author.name}")
+        to_send = random.choice(msg_list)
+        to_send = parse_text(to_send)
+        try:
+            s.reply(to_send)
+            print("Successfuly replied to post!")
+        except Exception as e:
+            print(f"Could not reply due to error: {repr(e)}. Skipping...",text_color="red")
+
+        time.sleep((values["-delay-"]*60))  # applies delay
 
 if __name__ == "__main__":
     start_spam(None,None,None,None)
