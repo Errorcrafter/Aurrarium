@@ -55,10 +55,9 @@ hn_sel_layout = [ [sg.Column(hn_sel_col,size=(400,50))] ]
 # CREDITS: yay attribution
 version_col = [ [sg.Text(f"Aurrarium {current_full_release}.{current_minor_release}b{current_build}\n" +
                         "Made by G1galovaniac\n" +
-                        "Discord: macpherson#1415\n" +
-                        "Guilded: guilded.gg/g1ga\n" +
-                        "Reddit: /u/Xianthu_Exists\n" +
-                        "GitHub: Errorcrafter")] ]
+                        "Note: If you paid for this software, you have been\n" +
+                        "scammed. This is available on my GitHub profile\n" +
+                        "at www.github.com/Errorcrafter")] ]
 
 version_col = [ [sg.Column(version_col,size=(400,130))] ]
 
