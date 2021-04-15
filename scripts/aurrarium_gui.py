@@ -53,21 +53,21 @@ hn_sel_col = [ [sg.Text("Sort By:"),sg.Radio("Hot",group_id=2,k="-hotRadio-"),sg
 hn_sel_layout = [ [sg.Column(hn_sel_col,size=(400,50))] ]
 
 # CREDITS: yay attribution
-credits_col = [ [sg.Text(f"Aurrarium {current_full_release}.{current_minor_release}b{current_build}\n" +
+version_col = [ [sg.Text(f"Aurrarium {current_full_release}.{current_minor_release}b{current_build}\n" +
                         "Made by G1galovaniac\n" +
                         "Discord: macpherson#1415\n" +
                         "Guilded: guilded.gg/g1ga\n" +
                         "Reddit: /u/Xianthu_Exists\n" +
                         "GitHub: Errorcrafter")] ]
 
-credits_layout = [ [sg.Column(credits_col,size=(400,130))] ]
+version_col = [ [sg.Column(version_col,size=(400,130))] ]
 
 # combines stuff into MORE columns because alignment
 tab1_col_l = [ [sg.Frame("Login",login_frame_layout)],
                [sg.Frame("Select Phrase to Spam",select_phrase_layout)] ]
 tab1_col_r = [ [sg.Frame("Account Stats",stats_frame_layout)],
                [sg.Frame("Sorting",hn_sel_layout)],
-               [sg.Frame("Credits",credits_layout)] ]
+               [sg.Frame("Version",version_col)] ]
 
 # this compiles all of the above into one tab
 tab1= [[sg.Column(tab1_col_l),sg.Column(tab1_col_r)]]
