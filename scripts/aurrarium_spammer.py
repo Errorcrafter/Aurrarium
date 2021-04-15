@@ -8,7 +8,7 @@ def split_file(category):  # splits contents of txt files in phrases folder into
     return f.split(" §\n")  # end of each phrase is marked by a space + section sign + line break
 
 def gen_random_string(chars:list,len:int):
-    return ''.join(random.choice(chars) for _ in range(len))
+    return ''.join(random.choice(chars) for i in range(len))
 
 def parse_text(txt:str):  # applies & and % notation
     happy_emjs = "😁😀😂🤣😄🤩".split()       # used in &em_spam&
@@ -17,8 +17,17 @@ def parse_text(txt:str):  # applies & and % notation
     zero_width = ['​', '‍', '‌']                    # used in % notation
 
     sp_txt = txt.split(" ")
-    for word in sp_txt:
-        re.sub("&sd&","https://github.com/XatzClient/Sigma-Deleter",word)
+    for i in range(len(sp_txt)):
+        if sp_txt[i].startswith("%"):
+            sp_txt[i] = sp_txt[i][1:]
+            sp_txt[i] = ''.join(f"{x}{random.choice(zero_width) if random.randint(0,1) else ''}" for x in sp_txt[i])
+        
+        sp_txt[i] = sp_txt[i].replace("&sd&","https://github.com/XatzClient/Sigma-Deleter")
+        sp_txt[i] = sp_txt[i].replace("&em_spam&",gen_random_string(happy_emjs,5))
+        sp_txt[i] = sp_txt[i].replace("&sad_spam&",gen_random_string(sad_emjs,5))
+        sp_txt[i] = sp_txt[i].replace("&anger_spam&",gen_random_string(anger_emjs,5))
+    
+    return " ".join(sp_txt)
 
 def start_spam(event,values,window,reddit:praw.Reddit):
     print = lambda *args, **kwargs: window['-spammerOutput-'].print(*args, **kwargs)
