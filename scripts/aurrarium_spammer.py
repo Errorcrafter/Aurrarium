@@ -11,9 +11,9 @@ def gen_random_string(chars:list,len:int):
     return ''.join(random.choice(chars) for i in range(len))
 
 def parse_text(txt:str):  # applies & and % notation
-    happy_emjs = "😁😀😂🤣😄🤩".split()       # used in &em_spam&
-    sad_emjs = "😥😖😫☹😔😞😟😭😩".split()  # used in &sad_spam&
-    anger_emjs = "😠😡🤬👿".split()            # used in &anger_spam&
+    happy_emjs = list("😁😀😂🤣😄🤩")         # used in &em_spam&
+    sad_emjs = list("😥😖😫☹😔😞😟😭😩")    # used in &sad_spam&
+    anger_emjs = list("😠😡🤬👿")              # used in &anger_spam&
     zero_width = ['​', '‍', '‌']                    # used in % notation
 
     sp_txt = txt.split(" ")
