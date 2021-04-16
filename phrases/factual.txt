@@ -1,6 +1,15 @@
-Yes, I am aware that these sorts of messages get posted quite a ot here, but I would like to say that as of right now, you %should probably %not %use %Sigma %client.
+Yes, I am aware that these sorts of messages get posted quite a lot here, but I would like to say that as of right now, you %should probably %not %use %Sigma %client.
 
 Most of Sigma's Hypixel %bypasses are %extremely %outdated, as [this](https://minecraft-hacking.fandom.com/wiki/Sigma_(Hacked_client)) wiki post shows. To quote it directly:
 > Sigma "was" a great choice to hack on servers like Cubecraft, Mineplex, Hypixel, as it was updated to bypass anti-cheats. Unfortunately, due to the %demotivation %of %the %developers, it tends to get you %banned a lot more as the %bypasses arent up to date, now it's considered %outdated and %limited %support for servers.
 
-In addition, Sigma is %extremely %resource-intensive due to the amount of fancy GUIs it has to render so it basically %eats %your %CPU and lowers your %framerate. There have been [people stating that after downloading Sigma, their %performance %dropped and only returned to normal after a %full %reset. ](https://imgur.com/a/pZYVKpO)
+If you *do* still want to %hack on Hypixel, you'll unfortunately need to fork out some cash to buy a ghost client like [Vape](https://www.vape.gg/), [Novoline](https://novoline.wtf), or [Astolfo](https://www.astolfo.lgbt/) as they have far better bypasses. §
+Do **not** use Sigma client. Its main dev, Omnikron, has been previously known to [include a %botnet in his previous client,](https://www.youtube.com/watch?v=0ogf2Qis_7A) even with the files rather brazenly named %`MPayload` and %`MWorker` . §
+You do realise there are plenty of clients other Sigma, right? Most of Sigma's modules aren't unique andmost of its %bypasses %no %longer %work.
+
+Some %alternatives:
+- 1.8: %Moon, %Novoline
+- 1.12: %Liquidbounce, %Inertia
+- 1.16: %Ares, %Meteor
+
+Come on, you can do better than this. §
