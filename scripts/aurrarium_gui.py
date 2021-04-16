@@ -49,9 +49,9 @@ def draw_gui():
     ###    ┏━━━━━━━━━━━━━━━━━━━━━ BOTTOM ROW ━━━━━━━━━━━━━━━━━━━━━┓   ###
     # SELECTION FRAME: select what to spam here
     select_phrase_col = [ [sg.Radio("Select from Preset",group_id=1,k="-sfpRadio-",enable_events=True,default=True),
-                        sg.Combo(["Memey","Evangelical","Ironic","Factual","All"],k="-phraseSelector-",readonly=True,default_value="Memey")],
+                        sg.Combo(["Memey","Evangelical","Ironic","Factual","All"],k="-phraseSelector-",readonly=True,default_value="Memey",disabled=False)],
                         [sg.Radio("Custom Message",group_id=1,k="-customMsgRadio-",enable_events=True,default=False)],
-                        [sg.Multiline(default_text="sigma balls lmao ez\n\ndownload this shit instead https://github.com/XatzClient/Sigma-Deleter",k="-customPhrase-",size=(40,7))] ]
+                        [sg.Multiline(default_text="%sigma %balls lmao ez\n\ndownload this shit instead &sd&",k="-customPhrase-",disabled=True,size=(40,7))] ]
 
     select_phrase_layout = [ [sg.Column(select_phrase_col,size=(400,220))] ]
 

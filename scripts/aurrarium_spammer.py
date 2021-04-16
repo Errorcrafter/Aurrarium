@@ -5,8 +5,15 @@ import random
 import time
 
 def split_file(category):  # splits contents of txt files in phrases folder into a list.
-    f = open(f"phrases/{category.lower()}.txt",encoding="utf8").read()
-    return f.split(" §\n")  # end of each phrase is marked by a space + section sign + line break
+    if category.lower() != "all":
+        f = open(f"phrases/{category.lower()}.txt",encoding="utf8").read()
+        return f.split(" §\n")  # end of each phrase is marked by a space + section sign + line break
+    else:  # if "all" is selected
+        f1 = open(r"phrases/evangelical.txt",encoding="utf8")
+        f2 = open(r"phrases/factual.txt",encoding="utf8")
+        f3 = open(r"phrases/ironic.txt",encoding="utf8")
+        f4 = open(r"phrases/memey.txt",encoding="utf8")
+        return "\n".join([f1,f2,f3,f4])
 
 def gen_random_string(chars:list,len:int):
     return ''.join(random.choice(chars) for i in range(len))
@@ -54,15 +61,21 @@ def start_spam(event,values,window,reddit:praw.Reddit):
     target = reddit.subreddit("test")  # for testing purposes, will change to sigmaclient later
     for s in target.stream.submissions():
         print(f"Found post \"{s.title}\" by user u/{s.author.name}")
-        to_send = random.choice(msg_list)
-        to_send = parse_text(to_send)
-        try:
-            s.reply(to_send)
-            print("Successfuly replied to post!")
-        except Exception as e:
-            print(f"Could not reply due to error: {repr(e)}. Skipping...",text_color="red")
 
-        time.sleep((values["-delay-"]*60))  # applies delay
+        # For choosing from presets is enabled
+        if values["-spfRadio-"] == True and values["-customMsgRadio-"] == False:
+            to_send = random.choice(msg_list)
+            to_send = parse_text(to_send)
+            try:
+                s.reply(to_send)
+                print("Successfuly replied to post!")
+            except Exception as e:
+                print(f"Could not reply due to error: {repr(e)}. Skipping...",text_color="red")
+
+            time.sleep((values["-delay-"]*60))  # applies delay
+
+        elif values["-spfRadio-"] == False and values["-customMsgRadio-"] == True:
+            to_send = parse_text(values["-customPhrase-"])
 
 if __name__ == "__main__":
     start_spam(None,None,None,None)
