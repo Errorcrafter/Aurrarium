@@ -2,17 +2,25 @@ import PySimpleGUI as sg
 import praw      # this is here so i can initiate the Reddit instance and get account stats
 import prawcore  # and this is here to make sure input credentials are valid
 from datetime import datetime  # used in -statsAccAge- because yes
-from aurrarium_spammer import start_spam
-import random
+from aurrarium_spammer import start_spam  # To run the spammer
+import threading  # Threading to prevent the gui from freezing up
+
+def call_spammer(event,values,window,reddit):  # starts the spammer in another thread
+    try:
+        start_spam(event,values,window,reddit)
+    except NameError:  # in case some dumb fuck forgets to enter their login
+        pass
+    except Exception as e:  # if shit goes horribly wrong
+        sg.Print(repr(e))
+    window.write_event_value('-THREAD-', '** DONE **')
 
 def draw_gui():
     sg.theme("Dark Amber")  # colour scheme!
-    #test()
 
     ###   ═══════════════════════ IMPORTANT ══════════════════════   ###
     current_full_release = "0"     # change THIS every time there is a major update (overhaul, new feature, etc)
     current_minor_release = "6"    # change THIS every time there is a smaller update (bugfixes, etc)
-    current_build = "12"            # change THIS every time there is a new commit or smth idfc
+    current_build = "13"            # change THIS every time there is a new commit or smth idfc
 
     ### ╔══════════════════════ SETTINGS TAB ══════════════════════╗ ###
     ###    ┏━━━━━━━━━━━━━━━━━━━━━━ TOP ROW ━━━━━━━━━━━━━━━━━━━━━━┓   ###
@@ -130,12 +138,13 @@ def draw_gui():
             window["-customPhrase-"].Update(disabled=False)    # only exists to annoy you.
 
         if event == "-startSpam-":  # executes code in aurrarium_spammer.py when this button is pressed
-            try:
-                start_spam(event,values,window,reddit)
-            except NameError:  # in case some dumb fuck forgets to enter their login
-                pass
-            except Exception as e:  # if shit goes horribly wrong
-                sg.Print(repr(e))
+            # try:
+            #     start_spam(event,values,window,reddit)
+            # except NameError:  # in case some dumb fuck forgets to enter their login
+            #     pass
+            # except Exception as e:  # if shit goes horribly wrong
+            #     sg.Print(repr(e))
+            threading.Thread(target=call_spammer, args=(event,values,window,reddit), daemon=True).start()
 
     window.close()  # closes the window once out of event loop
 
