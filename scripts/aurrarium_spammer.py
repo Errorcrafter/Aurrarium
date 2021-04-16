@@ -5,7 +5,7 @@ import random
 import time
 
 def split_file(category):  # splits contents of txt files in phrases folder into a list.
-    f = open(f"phrases/{category.lower()}.txt","r").read()
+    f = open(f"phrases/{category.lower()}.txt",encoding="utf8").read()
     return f.split(" §\n")  # end of each phrase is marked by a space + section sign + line break
 
 def gen_random_string(chars:list,len:int):
