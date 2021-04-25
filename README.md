@@ -1,7 +1,7 @@
 <!---[aurrarium_header](https://user-images.githubusercontent.com/69189354/114640950-b873ed80-9d03-11eb-97a7-f935079c8def.png)--->
 <p align="center">
 
-  <img src="https://user-images.githubusercontent.com/69189354/114640950-b873ed80-9d03-11eb-97a7-f935079c8def.png" alt="Aurrarium Header">
+  <img src="https://github.com/Errorcrafter/Aurrarium/blob/main/assets/aurrarium_header.png" alt="Aurrarium Header">
 
 </p>
 
