@@ -32,11 +32,13 @@ def parse_text(txt:str):  # applies & and % notation
         
         sp_txt[i] = sp_txt[i].replace("&sd&","https://github.com/XatzClient/Sigma-Deleter")
         sp_txt[i] = sp_txt[i].replace("&sdt&","https://www.youtube.com/watch?v=HwTQDfhQLeM")
-        sp_txt[i] = sp_txt[i].replace("&em_spam&",gen_random_string(happy_emjs,5))
-        sp_txt[i] = sp_txt[i].replace("&sad_spam&",gen_random_string(sad_emjs,5))
-        sp_txt[i] = sp_txt[i].replace("&anger_spam&",gen_random_string(anger_emjs,5))
+        sp_txt[i] = sp_txt[i].replace("&em_spam&",gen_random_string(happy_emjs,random.randint(3,10)))
+        sp_txt[i] = sp_txt[i].replace("&sad_spam&",gen_random_string(sad_emjs,random.randint(3,10)))
+        sp_txt[i] = sp_txt[i].replace("&anger_spam&",gen_random_string(anger_emjs,random.randint(3,10)))
     
-    return " ".join(sp_txt)
+    parsed_txt = " ".join(sp_txt)
+    if parsed_txt.endswith("§"): parsed_txt = parsed_txt[:-1]
+    return parsed_txt
 
 
 def start_spam(event,values,window,reddit:praw.Reddit):
