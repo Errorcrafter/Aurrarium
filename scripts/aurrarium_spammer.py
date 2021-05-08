@@ -31,6 +31,7 @@ def parse_text(txt:str):  # applies & and % notation
             sp_txt[i] = ''.join(f"{x}{random.choice(zero_width)}" for x in sp_txt[i])
         
         sp_txt[i] = sp_txt[i].replace("&sd&","https://github.com/XatzClient/Sigma-Deleter")
+        sp_txt[i] = sp_txt[i].replace("&sdt&","https://www.youtube.com/watch?v=HwTQDfhQLeM")
         sp_txt[i] = sp_txt[i].replace("&em_spam&",gen_random_string(happy_emjs,5))
         sp_txt[i] = sp_txt[i].replace("&sad_spam&",gen_random_string(sad_emjs,5))
         sp_txt[i] = sp_txt[i].replace("&anger_spam&",gen_random_string(anger_emjs,5))
