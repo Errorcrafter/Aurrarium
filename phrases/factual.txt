@@ -5,11 +5,17 @@ Most of Sigma's Hypixel %bypasses are %extremely %outdated, as [this](https://mi
 
 If you *do* still want to %hack on Hypixel, you'll unfortunately need to fork out some cash to buy a ghost client like [Vape](https://www.vape.gg/), [Novoline](https://novoline.wtf), or [Astolfo](https://www.astolfo.lgbt/) as they have far better bypasses. §
 Do **not** use Sigma client. Its main dev, Omnikron, has been previously known to [include a %botnet in his previous client,](https://www.youtube.com/watch?v=0ogf2Qis_7A) even with the files rather brazenly named %`MPayload` and %`MWorker` . §
-You do realise there are plenty of clients other Sigma, right? Most of Sigma's modules aren't unique andmost of its %bypasses %no %longer %work.
+You do realise there are plenty of clients other Sigma, right? Most of Sigma's modules aren't unique and most of its %bypasses %no %longer %work.
 
 Some %alternatives:
-- 1.8: %Moon, %Novoline
+- 1.8: %Moon, %Novoline. %Spicy
 - 1.12: %Liquidbounce, %Inertia
 - 1.16: %Ares, %Meteor
 
 Come on, you can do better than this. §
+Despite most of the claims found on the official website and the Discord server, most of Sigma's bypasses are horribly %outdated. What else did you expect from a free client?
+
+If you still do not want to fork out cash to %hack on Hypixel, [Itami](https://itami.cf/) and [SpicyClient](https://spicyclient.info/) are good alternatives. Otherwise, Dortware, Astolfo, Vape and Novoline are good paid clients. §
+Sigma, being an extremely resource-intensive client, should not be the best one to use on any server. several serious allegations with actually decent proof have been made and it is generally a %shit client lol
+
+In all seriousness, the extreme %censorship, the leaving in of unused features that open %port %3000, and the non-existence of %un-biased evidence to support either side of the %argument makes you better off just using some other client. §
