@@ -65,10 +65,14 @@ def start_spam(event,values,window,reddit:praw.Reddit):
     for s in target.stream.submissions():
         print(f"Found post \"{s.title}\" by user u/{s.author.name}")
 
+        print("ughjihk")
         # For choosing from presets is enabled
-        if values["-spfRadio-"] == True and values["-customMsgRadio-"] == False:
+        if values["-sfpRadio-"] == True and values["-customMsgRadio-"] == False:
+            print("a")
             to_send = random.choice(msg_list)
+            print("b")
             to_send = parse_text(to_send)
+            print("C")
             try:
                 s.reply(to_send)
                 print("Successfuly replied to post!")
@@ -77,7 +81,8 @@ def start_spam(event,values,window,reddit:praw.Reddit):
 
             time.sleep((values["-delay-"]*60))  # applies delay
 
-        elif values["-spfRadio-"] == False and values["-customMsgRadio-"] == True:
+        elif values["-sfpRadio-"] == False and values["-customMsgRadio-"] == True:
+            print("frgtf")
             to_send = parse_text(values["-customPhrase-"])
 
 if __name__ == "__main__":
