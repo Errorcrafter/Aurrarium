@@ -28,7 +28,7 @@ def parse_text(txt:str):  # applies & and % notation
     for i in range(len(sp_txt)):
         if sp_txt[i].startswith("%"):
             sp_txt[i] = sp_txt[i][1:]
-            sp_txt[i] = ''.join(f"{x}{random.choice(zero_width) if random.randint(0,1) else ''}" for x in sp_txt[i])
+            sp_txt[i] = ''.join(f"{x}{random.choice(zero_width)}" for x in sp_txt[i])
         
         sp_txt[i] = sp_txt[i].replace("&sd&","https://github.com/XatzClient/Sigma-Deleter")
         sp_txt[i] = sp_txt[i].replace("&em_spam&",gen_random_string(happy_emjs,5))
