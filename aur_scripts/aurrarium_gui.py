@@ -4,6 +4,20 @@ import prawcore  # and this is here to make sure input credentials are valid
 from datetime import datetime  # used in -statsAccAge- because yes
 from aurrarium_spammer import start_spam  # To run the spammer
 import threading  # Threading to prevent the gui from freezing up
+import sys
+import os
+
+def get_phrases():
+    files = []
+    path = os.path.dirname(__file__) + '/../phrases'
+
+    for file in os.listdir(path):
+        if file.endswith(".txt"):
+            filename = file[:-4]
+            files.append(filename.capitalize())
+    
+    files.append("All")
+    return files
 
 def call_spammer(event,values,window,reddit):  # starts the spammer in another thread
     try:
@@ -20,7 +34,7 @@ def draw_gui():
     ###   ═══════════════════════ IMPORTANT ══════════════════════   ###
     current_full_release = "0"     # change THIS every time there is a major update (overhaul, new feature, etc)
     current_minor_release = "6"    # change THIS every time there is a smaller update (bugfixes, etc)
-    current_build = "13"            # change THIS every time there is a new commit or smth idfc
+    current_build = "14"            # change THIS every time there is a new commit or smth idfc
 
     ### ╔══════════════════════ SETTINGS TAB ══════════════════════╗ ###
     ###    ┏━━━━━━━━━━━━━━━━━━━━━━ TOP ROW ━━━━━━━━━━━━━━━━━━━━━━┓   ###
@@ -49,7 +63,7 @@ def draw_gui():
     ###    ┏━━━━━━━━━━━━━━━━━━━━━ BOTTOM ROW ━━━━━━━━━━━━━━━━━━━━━┓   ###
     # SELECTION FRAME: select what to spam here
     select_phrase_col = [ [sg.Radio("Select from Preset",group_id=1,k="-sfpRadio-",enable_events=True,default=True),
-                        sg.Combo(["Memey","Evangelical","Ironic","Factual","All"],k="-phraseSelector-",readonly=True,default_value="Memey",disabled=False)],
+                        sg.Combo(get_phrases(),k="-phraseSelector-",readonly=True,default_value="Memey",disabled=False)],
                         [sg.Radio("Custom Message",group_id=1,k="-customMsgRadio-",enable_events=True,default=False)],
                         [sg.Multiline(default_text="%sigma %balls lmao ez\n\ndownload this shit instead &sd&",k="-customPhrase-",disabled=True,size=(40,7))] ]
 
